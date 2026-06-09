@@ -4,7 +4,7 @@ namespace WebApplication1.Models
 {
     public class ProductInfo
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string RollNo { get; set; } = string.Empty;
 
         public string GSM { get; set; } = string.Empty;

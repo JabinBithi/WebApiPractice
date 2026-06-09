@@ -6,8 +6,11 @@ namespace WebApplication1.Services
     {
         Task<List<ProductInfo>> GetProductsAsync();
 
-        Task<ProductInfo?> GetProductByRollNoAsync(string rollNo);
+        Task<ProductInfo?> GetProductByRollNoAsync(int id);
 
         Task<int> AddProductAsync(ProductInfo product);
+
+        Task<bool> UpdateProductByIdNoAsync(ProductInfo product);
+        Task<bool> DeleteProductAsync(int id);
     }
 }
