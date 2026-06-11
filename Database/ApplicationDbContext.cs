@@ -1,26 +1,55 @@
-﻿using System;
-using Oracle.ManagedDataAccess.Client;
+﻿using Microsoft.EntityFrameworkCore;
+using WebApplication1.Models;
 
-namespace WebApplication1.Database
+namespace WebApplication1.Data
 {
-    public class OracleDbContext
+    public class AppDbContext : DbContext
     {
-        private readonly IConfiguration _configuration;
-
-        public OracleDbContext(IConfiguration configuration)
+        public AppDbContext(
+            DbContextOptions<AppDbContext> options)
+            : base(options)
         {
-            _configuration = configuration;
         }
 
-        public OracleConnection CreateConnection()
-        {
-            var cs = _configuration.GetConnectionString("OracleDb");
-            if (string.IsNullOrWhiteSpace(cs))
-            {
-                throw new InvalidOperationException("Connection string 'OracleDb' is not configured.");
-            }
+        public DbSet<ProductInfo> Products { get; set; }
 
-            return new OracleConnection(cs);
-        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductInfo>()
+                .ToTable("PRODUCT_INFO");
+
+           modelBuilder.Entity<ProductInfo>()
+            .Property(p => p.Id)
+            .HasColumnName("ID"); // or the exact DB column name
+
+            modelBuilder.Entity<ProductInfo>()
+                .Property(x => x.RollNo)
+                .HasColumnName("ROLL_NO");
+
+            modelBuilder.Entity<ProductInfo>()
+                .Property(x => x.GSM)
+                .HasColumnName("GSM");
+
+            modelBuilder.Entity<ProductInfo>()
+                .Property(x => x.Width)
+                .HasColumnName("WIDTH");
+
+            modelBuilder.Entity<ProductInfo>()
+              .Property(p => p.Twist)
+              .HasColumnName("TWIST");
+
+
+            modelBuilder.Entity<ProductInfo>()
+              .Property(p => p.PillingTest)
+              .HasColumnName("PILLING_TEST");
+
+           
+
+            modelBuilder.Entity<ProductInfo>()
+              .Property(p => p.ColorFastness)
+              .HasColumnName("COLOR_FASTNESS");
+               
+        
+    }
     }
 }

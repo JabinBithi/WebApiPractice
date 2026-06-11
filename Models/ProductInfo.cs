@@ -5,15 +5,18 @@ namespace WebApplication1.Models
     public class ProductInfo
     {
         public int Id { get; set; }
-        public string RollNo { get; set; } = string.Empty;
 
-        public string GSM { get; set; } = string.Empty;
+        public string? RollNo { get; set; }
 
-        public string Width { get; set; } = string.Empty; 
-        public string ColorFastness { get; set; } = string.Empty;
+        public decimal? GSM { get; set; }
 
-        public string PillingTest { get; set; } = string.Empty;
-        public string Twist { get; set; } = string.Empty;
-         
+        public decimal? Width { get; set; }
+
+        public string? ColorFastness { get; set; }
+
+        public string? PillingTest { get; set; }
+
+        public string? Twist { get; set; }
     }
 }
+ 

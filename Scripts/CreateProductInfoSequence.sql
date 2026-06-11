@@ -1,0 +1,6 @@
+-- SQL script to create sequence for Oracle
+CREATE SEQUENCE PRODUCT_INFO_SEQ
+  START WITH 1
+  INCREMENT BY 1
+  NOCACHE
+  NOCYCLE;
